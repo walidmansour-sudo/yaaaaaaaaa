@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file: .env
+    environment:
+      DB_PATH: /data/app.db
+    volumes:
+      - app_data:/data      # la base SQLite survit aux redémarrages
+    restart: unless-stopped
+
+volumes:
+  app_data:

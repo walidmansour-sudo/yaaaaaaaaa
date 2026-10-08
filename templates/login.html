@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}Connexion{% endblock %}
+{% block body %}<div class="card"><h1>Connexion</h1>
+{% for m in get_flashed_messages() %}<div class="flash">{{ m }}</div>{% endfor %}
+<form method="post">
+<label>Nom d'utilisateur<input type="text" name="username" required autocomplete="username"></label>
+<label>Mot de passe<input type="password" name="password" required autocomplete="current-password"></label>
+<div id="puzzle"></div><p id="puzzle-msg"></p>
+<button class="primary" id="submit-btn" disabled>Connexion</button></form>
+<p><a href="/register">Créer un compte</a></p></div>
+<script src="{{ url_for('static', filename='puzzle.js') }}"></script>{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block title %}Ma to-do list{% endblock %}
+{% block body %}<div class="card wide">
+<div class="row"><h1>Salut {{ session.username }} 👋</h1>
+<form method="post" action="/logout"><button class="btn">Déconnexion</button></form></div>
+<form method="post" class="add"><input type="text" name="title" placeholder="Nouvelle tâche…" maxlength="200" required>
+<button class="primary">Ajouter</button></form>
+{% for t in items %}<div class="todo {{ 'done' if t.done }}">
+<form method="post" action="/todos/{{ t.id }}/toggle"><button class="small">{{ '✅' if t.done else '⬜' }}</button></form>
+<span>{{ t.title }}</span>
+<form method="post" action="/todos/{{ t.id }}/delete"><button class="small">🗑️</button></form></div>
+{% else %}<p>Aucune tâche pour l'instant.</p>{% endfor %}
+</div>{% endblock %}

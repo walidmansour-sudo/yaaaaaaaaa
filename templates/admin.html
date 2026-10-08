@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block title %}Admin{% endblock %}
+{% block body %}<div class="card wide">
+<div class="row"><h1>Page admin</h1>
+<form method="post" action="/logout"><button class="btn">Déconnexion</button></form></div>
+<p>Nombre d'utilisateurs : <span class="stat">{{ total }}</span></p>
+<table><tr><th>ID</th><th>Nom</th><th>Inscrit le (UTC)</th><th>Tâches</th></tr>
+{% for u in users %}<tr><td>{{ u.id }}</td><td>{{ u.username }}{% if u.is_admin %} (admin){% endif %}</td>
+<td>{{ u.created_at }}</td><td>{{ u.n_todos }}</td></tr>{% endfor %}</table></div>{% endblock %}
